@@ -43,10 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             const Text(
-              'Nomor Kelompok:  [isi no kelompok]',
+              'Nomor Kelompok:  [34]',
             ),
             const Text(
-              'Mhs 1:  [isi nim, nama]',
+              'Mhs 1:  [2001081, Arzaniel Ethan Martosiswoyo]',
             ),
             const Text(
               'Mhs 2:  [isi nim, nama]',
@@ -81,15 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  /*jaawaban no 1
-  Widget soalNo1() {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        ),
-        body: const Text("ini jawaban no 1"));
-  }*/
-
+  //jaawaban no 1
   Widget soalNo1() {
     return Scaffold(
       backgroundColor: Color(0xffe2e2e2),
@@ -102,63 +94,80 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/user.jpeg'),
-                radius: 40,
-              ),
-            ),
-            Divider(
-              height: 60,
-              color: Colors.grey[800],
-            ),
-            Text(
-              'Name',
-              style: TextStyle(color: Colors.grey, letterSpacing: 2),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'Budi Martami',
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 30, letterSpacing: 1),
+                ),
+                Container(
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/user.jpeg'),
+                    radius: 40,
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 10),
             Text(
               'Ubah Profile',
               style: TextStyle(
-                  color: Colors.amberAccent[200],
                   letterSpacing: 2,
                   fontSize: 28,
                   fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Text(
-              'Nama Depan',
-              style: TextStyle(color: Colors.grey, letterSpacing: 2),
-            ),
-            Divider(
-              height: 60,
-              color: Colors.grey[800],
+            TextFormField(
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Nama Depan',
+              ),
             ),
             SizedBox(height: 10),
-            Text(
-              '8',
-              style: TextStyle(
-                  color: Colors.amberAccent[200],
-                  letterSpacing: 2,
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold),
+            TextFormField(
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Nama Belakang',
+              ),
             ),
             SizedBox(height: 30),
             Row(
               children: <Widget>[
-                Icon(
-                  Icons.email,
-                  color: Colors.grey[400],
+                DropdownButton<String>(
+                  hint: Text('Gender'),
+                  items: <String>['Perempuan', 'Laki-Laki'].map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (_) {},
                 ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'keith@mail.com',
-                  style: TextStyle(
-                      color: Colors.grey[400], fontSize: 18, letterSpacing: 1),
-                ),
+                SizedBox(width: 30),
+
               ],
+            ),
+            SizedBox(height: 30),
+            TextFormField(
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Alamat',
+              ),
+            ),
+            SizedBox(height: 30),
+            Container(
+              margin: const EdgeInsets.all(10),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return build(context);
+                  }));
+                },
+                child: const Text('Simpan'),
+              ),
             ),
           ],
         ),
